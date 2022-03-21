@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Book" representedClassName="Book" syncable="YES" codeGenerationType="class">
+        <attribute name="authorName" optional="YES" attributeType="String"/>
+        <attribute name="bookDescription" optional="YES" attributeType="String"/>
+        <attribute name="isbn" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="String"/>
+        <relationship name="issueHistory" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Issue"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="books" inverseEntity="Student"/>
+    </entity>
+    <entity name="Issue" representedClassName="Issue" syncable="YES" codeGenerationType="class">
+        <attribute name="comments" optional="YES" attributeType="String"/>
+        <attribute name="fine" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="issuedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="returnDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="IssueRequest" representedClassName="IssueRequest" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student"/>
+    </entity>
+    <entity name="Student" representedClassName=".Student" syncable="YES" codeGenerationType="category">
+        <attribute name="course" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="roleNumber" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Book" inverseName="student" inverseEntity="Book"/>
+    </entity>
+    <elements>
+        <element name="Book" positionX="-54" positionY="-9" width="128" height="134"/>
+        <element name="Issue" positionX="-45" positionY="27" width="128" height="89"/>
+        <element name="Student" positionX="-54" positionY="-9" width="128" height="119"/>
+        <element name="IssueRequest" positionX="-45" positionY="54" width="128" height="74"/>
+    </elements>
+</model>
